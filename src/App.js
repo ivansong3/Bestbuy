@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css"
 
 import {Container, Row, Col} from 'react-bootstrap';
+import ProductCard from './components/ProductCard.component';
  
 class App extends Component {
   render() {
@@ -23,7 +24,7 @@ class App extends Component {
 
           <Row>
             <Col xs={9}>
-              
+              <ProductCard> </ProductCard>
             </Col>
             <Col></Col>
           </Row>
