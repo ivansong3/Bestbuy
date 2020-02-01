@@ -14,16 +14,19 @@ const itemInfo = {
 }
 
 const imgStyling = {
-    width: "8vw",
-    height: "20vw",
-    objectFit: "cover"
+    width: "50%",
+    height: "10vw",
+    objectFit: "cover",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
 }
 
 class ProductCard extends Component {
 
     render() {
         return (
-            <Card className="card text-center" style={{ width: '18rem', height: '25rem' }}>
+            <Card className="card text-center" style={{ width: '22rem', height: '25rem' }}>
                 <Card.Header>{getProductName(itemInfo[this.props.item])}</Card.Header>
                     <Card.Body>
                         <img src={require(`../assets/${getImage(itemInfo[this.props.item])}`)} style={{imgStyling}} alt=''/>

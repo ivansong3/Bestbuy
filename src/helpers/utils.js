@@ -6,7 +6,7 @@ export const urlBuilder = (query) => {
     if (query !== '') {
         const urlSafeQuery = urlify(query);
         console.log(`utils.urlBuilder urlSafeQuery ${urlSafeQuery}`);
-        return `${apiBaseUrl}${urlSafeQuery}${queryFilter}${process.env.GOOGLE_API_KEY}`
+        return `${apiBaseUrl}${urlSafeQuery}${queryFilter}AIzaSyBxwOZdMthdFNrTWexLsgxIZ0vkDF7yIgU`
     } else {
         throw Error("query is null");
     }

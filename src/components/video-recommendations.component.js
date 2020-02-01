@@ -13,7 +13,7 @@ const opts = {
 export default class VideoRecommendationPanel extends Component {
     render() {
         return (
-            <CardDeck style={{display: 'flex', flexDirection: 'row'}}>
+            <CardDeck style={{marginLeft: "90px", display: 'flex', flexDirection: 'row'}}>
                 <Card style={{ width: '30 rem', flex: 1 }}>
                     <Card.Body>
                         <Video videoId={this.props.videos[0]}/>
