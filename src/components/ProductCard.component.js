@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBlock, 
-CardTitle, CardSubtitle, Button} from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
 
 class extends Component {
     constructor() {
@@ -8,7 +7,7 @@ class extends Component {
     }
 
     render() {
-        return {
+        return (
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
@@ -20,8 +19,9 @@ class extends Component {
                  <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
             </Card>
+        )
             
-        }
+        
     }
 }
 
