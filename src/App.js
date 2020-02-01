@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 import axios from 'axios';
-import {Row, Col, CardDeck } from 'react-bootstrap';
+import {Container, Row, Col, CardDeck } from 'react-bootstrap';
 import { urlBuilder, arraysEqual } from './helpers/utils';
 import VideoRecommendationPanel from './components/video-recommendations.component';
 import ProductCard from "./components/ProductCard.component";
@@ -78,52 +78,67 @@ export default class App extends Component {
 
   render() {
     return (
-        <container>
+        <Container>
           <Row>
             <h1 className="title">
               Bestbuy Blue Assistant
             </h1>
           </Row>
-          <Row style={{marginLeft: '50px'}}>
+          <Row>
+          <h3 className="title">
+              Recommendation Videos
+            </h3>
             <VideoRecommendationPanel videos={this.state.youtubeQuery}/>
           </Row>
           <Row>
-            <Col style={{marginLeft: '50px', marginTop: '50px'}} xs={9}>
+            <Col xs={30}>
+              <Row>
+                <CardDeck>
+                  <ProductCard item={this.state.products[0]}/>
+                  <ProductCard item={this.state.products[1]}/>
+                  <ProductCard item={this.state.products[2]}/>
+                </CardDeck>
+              </Row>
+              <Row>
               <CardDeck>
-                <ProductCard item={this.state.products[0]}/>
-                <ProductCard item={this.state.products[1]}/>
-                <ProductCard item={this.state.products[2]}/>
-              </CardDeck>
+                  <ProductCard item={this.state.products[3]}/>
+                  <ProductCard item={this.state.products[4]}/>
+                  <ProductCard item={this.state.products[5]}/>
+                </CardDeck>
+              </Row>
+              <Row>
+              <CardDeck>
+                  <ProductCard item={this.state.products[6]}/>
+                  <ProductCard item={this.state.products[7]}/>
+                  <ProductCard item={this.state.products[8]}/>
+                </CardDeck>
+              </Row>
             </Col>
-            <Col style={{marginLeft: '50px', marginTop: '50px'}} xs={9}>
-            <CardDeck>
-                <ProductCard item={this.state.products[3]}/>
-                <ProductCard item={this.state.products[4]}/>
-                <ProductCard item={this.state.products[5]}/>
-              </CardDeck>
-            </Col>
-            <Col style={{marginLeft: '50px', marginTop: '50px'}} xs={9}>
-            <CardDeck>
-                <ProductCard item={this.state.products[6]}/>
-                <ProductCard item={this.state.products[7]}/>
-                <ProductCard item={this.state.products[8]}/>
-              </CardDeck>
-            </Col>
-            <Col style={{position: 'relative', }}>
-            <table>
-              <tr>
-                <PriorityButton description='Screen Res' value={5} turnButtonOn={this.turnButtonOn} turnButtonOff={this.turnButtonOff}></PriorityButton>
-              </tr>
-              <tr>
-              <PriorityButton description='Battery'  value={1} turnButtonOn={this.turnButtonOn} turnButtonOff={this.turnButtonOff}></PriorityButton>
-              </tr>
-              <tr>
-              <PriorityButton description='Price'  value={2} turnButtonOn={this.turnButtonOn} turnButtonOff={this.turnButtonOff}></PriorityButton>
-              </tr>
+            <Col style={{position: 'sticky'}} xs={2}>
+            <table style={{paddingLeft: "40px"}}>
+              <tbody>
+                <tr>
+                  <td>
+                    <PriorityButton description='Screen Res' value={5} turnButtonOn={this.turnButtonOn} turnButtonOff={this.turnButtonOff} style={{paddingLeft: "0px"}}></PriorityButton>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <PriorityButton description='Battery' value={1} turnButtonOn={this.turnButtonOn} turnButtonOff={this.turnButtonOff} style={{paddingLeft: "20px"}}></PriorityButton>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <PriorityButton description='Price' value={2} turnButtonOn={this.turnButtonOn} turnButtonOff={this.turnButtonOff} style={{paddingLeft: "20px"}}></PriorityButton>
+                  </td>
+                </tr>
+              </tbody>
             </table>
             </Col>
           </Row>
-        </container>
+        </Container>
       );
   }
   turnButtonOn = val => {
@@ -186,8 +201,6 @@ export default class App extends Component {
             throw new Error(err);
         })
   }
-
-  
 }
 
  
