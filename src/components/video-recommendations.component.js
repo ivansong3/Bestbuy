@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import { Card, CardDeck } from 'react-bootstrap';
 import YouTube from 'react-youtube';
 
-const stylingCenter = {
-    center: {
-      marginLeft: "auto",
-      marginRight: "auto"
-    }
-  }
-
 const opts = {
     height: '169',
     width: '300',
@@ -19,7 +12,7 @@ const opts = {
 
 const testState = ["7DMDA5pde-0", "YPln3JP_gKs", "bK3GMtGeT_U"]
 
-class ProductCard extends Component {
+export default class VideoRecommendationPanel extends Component {
     render() {
         return (
             <CardDeck style={{display: 'flex', flexDirection: 'row'}}>
@@ -53,5 +46,3 @@ const Video = (props) => {
         <YouTube className="video" videoId={props.videoId} opts={opts} onReady={event => {event.target.pauseVideo();}}/>
     </div>
 }
-
-export default ProductCard;

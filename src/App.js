@@ -1,43 +1,60 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css"
 
-import {Container, Row, Col} from 'react-bootstrap';
-import CardDeck from './components/ProductCard.component';
+import {Row, Col, CardDeck } from 'react-bootstrap';
+import CardDeckCustom from './components/CardDeck.component';
+import VideoRecommendationPanel from './components/video-recommendations.component';
+import ProductCard from "./components/ProductCard.component";
  
-class App extends Component {
+export default class App extends Component {
   constructor(prop) {
     super(prop);
-    this.state = {products: []};
+    this.state = {products: [9, 1, 2,
+                             3, 4, 5,
+                             6, 7, 8],
+                  combination: 0 };
 }
-
   render() {
     return (
-      <Router>
         <container>
           <Row>
             <h1 className="title">
-              Bestbuy Blue Assitant
+              Bestbuy Blue Assistant
             </h1>
           </Row>
-      
-          <Row></Row>
-
-          <Row>
-            <Col xs={9}>
-              <CardDeck>
-                 <Card item={this.state.products[0]}/>
-                 <Card item >
-                </CardDeck>
-            </Col>
-            <Col></Col>
+          <Row style={{marginLeft: '250px'}}>
+            <VideoRecommendationPanel/>
           </Row>
-
+          <Row>
+            <Col style={{marginLeft: '200px'}} xs={9}>
+              <CardDeck>
+                <ProductCard item={this.state.products[0]}/>
+                <ProductCard item={this.state.products[1]}/>
+                <ProductCard item={this.state.products[2]}/>
+              </CardDeck>
+            </Col>
+            <Col style={{marginLeft: '200px'}} xs={9}>
+            <CardDeck>
+                <ProductCard item={this.state.products[3]}/>
+                <ProductCard item={this.state.products[4]}/>
+                <ProductCard item={this.state.products[5]}/>
+              </CardDeck>
+            </Col>
+            <Col style={{marginLeft: '200px'}} xs={9}>
+            <CardDeck>
+                <ProductCard item={this.state.products[6]}/>
+                <ProductCard item={this.state.products[7]}/>
+                <ProductCard item={this.state.products[8]}/>
+              </CardDeck>
+            </Col>
+          </Row>
         </container>
-      </Router>
     );
   }
 }
 
-export default App;
+const onButtonClick = (val) => {
+  let sum = this.state.combination + val;
+  this.setState({combination: sum})
+}
