@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css"
 
 import {Row, Col, CardDeck } from 'react-bootstrap';
-import CardDeckCustom from './components/CardDeck.component';
 import VideoRecommendationPanel from './components/video-recommendations.component';
 import ProductCard from "./components/ProductCard.component";
  
