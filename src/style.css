@@ -9,3 +9,8 @@
 .cardTitle {
     text-align: middle;
 }
+
+table {
+    padding: 5px;
+    position: fixed;
+}

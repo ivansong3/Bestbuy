@@ -10,25 +10,23 @@ const opts = {
     }
 };
 
-const testState = ["7DMDA5pde-0", "YPln3JP_gKs", "bK3GMtGeT_U"]
-
 export default class VideoRecommendationPanel extends Component {
     render() {
         return (
             <CardDeck style={{display: 'flex', flexDirection: 'row'}}>
                 <Card style={{ width: '30 rem', flex: 1 }}>
                     <Card.Body>
-                        <Video videoId={testState[0]}/>
+                        <Video videoId={this.props.videos[0]}/>
                     </Card.Body>
                 </Card>
                 <Card style={{ width: '30 rem' }}>
                     <Card.Body>
-                        <Video videoId={testState[1]}/>
+                        <Video videoId={this.props.videos[1]}/>
                     </Card.Body>
                 </Card>
                 <Card style={{ width: '30 rem' }}>
                     <Card.Body>
-                        <Video videoId={testState[2]}/>
+                        <Video videoId={this.props.videos[2]}/>
                     </Card.Body>
                 </Card>
             </CardDeck>
