@@ -8,7 +8,7 @@ import VideoRecommendationPanel from './components/video-recommendations.compone
 import ProductCard from "./components/ProductCard.component";
 import PriorityButton from "./components/priority-button.component";
 
-export default class App extends Component {
+ export default class App extends Component {
   constructor(prop) {
     super(prop);
     this.state = {products: [9, 1, 2,
@@ -18,10 +18,9 @@ export default class App extends Component {
                   youtubeQuery: ["7DMDA5pde-0", "YPln3JP_gKs", "bK3GMtGeT_U"] };
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(prevProps, prevState) {
     let currCombination = this.state.combination;
     let newState = this.state.products;
-    let didStateChange = false;
 
     console.log( 'component update');
     switch (currCombination) {
@@ -30,7 +29,6 @@ export default class App extends Component {
         newState = [1, 8, 9, 2, 5, 6, 4, 3, 7];
         console.log( 'case 1');
         if (!arraysEqual(prevState.products, newState) && prevState.combination !== this.state.combination) {
-          didStateChange = true;
           this.setState({products: newState});
         }
         break;
@@ -39,7 +37,6 @@ export default class App extends Component {
         console.log( 'case 2');
         newState = [4, 7, 3, 5, 8, 2, 1, 6, 9];
         if (!arraysEqual(prevState.products, newState) && prevState.combination !== this.state.combination) {
-          didStateChange = true;
           this.setState({products: newState});
         }
         break;
@@ -48,7 +45,6 @@ export default class App extends Component {
         console.log( 'case 3');
         newState = [6, 9, 1, 2, 8, 5, 3, 7, 4];
         if (!arraysEqual(prevState.products, newState) && prevState.combination !== this.state.combination) {
-          didStateChange = true;
           this.setState({products: newState});
         }
         break;
@@ -57,7 +53,6 @@ export default class App extends Component {
         console.log( 'case 5');
         newState = [5, 6, 7, 8, 9, 1, 2, 3, 4];
         if (!arraysEqual(prevState.products, newState) && prevState.combination !== this.state.combination) {
-          didStateChange = true;
           this.setState({products: newState});
         }
         break;
@@ -66,7 +61,6 @@ export default class App extends Component {
         console.log( 'case 6');
         newState = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         if (!arraysEqual(prevState.products, newState) && prevState.combination !== this.state.combination) {
-          didStateChange = true;
           this.setState({products: newState});
         }
         break;
@@ -75,7 +69,6 @@ export default class App extends Component {
         console.log( 'case 7');
         newState = [5, 4, 3, 2, 1, 9, 8, 7, 6];
         if (!arraysEqual(prevState.products, newState) && prevState.combination !== this.state.combination) {
-          didStateChange = true;
           this.setState({products: newState});
         }
         break;
@@ -85,16 +78,11 @@ export default class App extends Component {
 
     try {
       console.log( 'enter try catch');
-      console.log(`prev ${prevState.combination} curr ${this.state.combination}`)
-      if (didStateChange) {
-        console.log( 'case 1');
-        const newQuery = this.youtubeQuery();
-        console.log(newQuery)
-        if (newQuery !== undefined) {
-          console.log(`newquery: ${newQuery}`);
-          console.log(this.state.combination);
-          this.setState({youtubeQuery: newQuery});
-        }
+      const newQuery = await this.youtubeQuery();
+      if (!arraysEqual(prevState.youtubeQuery, newQuery)) {
+        console.log('done await')
+        console.log(newQuery);
+        this.setState({youtubeQuery: newQuery});
       }
     } catch (err) {
       console.log(err);
@@ -200,36 +188,42 @@ export default class App extends Component {
     }
   }
   
-  youtubeQuery() {
+  async youtubeQuery() {
   console.log(this.state.combination);
   let query = this.combinationId();
   let url = urlBuilder(query);
   let headers = {
         'Accept': 'application/json'
   }
-  axios.get(url, {headers})
-        .then(res => {
-            console.log(res);
-            let newQuery = [];
-            if (res.data.items) {
-                res.data.items.forEach(e => {
-                    if (e.id.videoId) {
-                      console.log(e.id.videoId);
-                      newQuery.push(e.id.videoId);
-                    }  
-                });
-                console.log(`finished forEach`)
-                if (newQuery.length === 0) {
-                  console.log(`finished url length === 0`)
-                  throw new Error(`error reading res ${res.items}`);
-                }
-                console.log(`return url`)
-                return newQuery;
-            }
-        })
-        .catch(err => {
-            console.log(err);
-            throw new Error(err);
-        })
+  try {
+    let res = await axios.get(url, {headers});
+
+    if (res.status === 200) {
+      console.log(res);
+      let newQuery = [];
+      if (res.data.items) {
+          res.data.items.forEach(e => {
+              if (e.id.videoId) {
+                console.log(e.id.videoId);
+                newQuery.push(e.id.videoId);
+                  console.log(newQuery);
+              }  
+          });
+          console.log(`finished forEach`)
+          if (newQuery.length === 0) {
+            console.log(`finished url length === 0`)
+            throw new Error(`error reading res ${res.items}`);
+          }
+          console.log(`return url`)
+            console.log(newQuery);
+          return newQuery;
+        } else {
+            throw new Error('undefined');
+      }
+    }
+  } catch (err) {
+    console.log(err);
+    throw new Error(err);
   }
+}
 }
