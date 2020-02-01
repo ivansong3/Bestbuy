@@ -11,10 +11,6 @@ class PriorityButton extends Component {
                     turnedOn: false}
     }
 
-    onClick() {
-        
-    }
-
     componentDidMount() {
         let val = this.props.value;
         if (val)
@@ -24,7 +20,7 @@ class PriorityButton extends Component {
 
     render() {
         return (
-            <Button size='lg' onClick={this.state.turnedOn ? () => {this.props.turnButtonOff(this.state.value)} : () => {this.props.turnButtonOn(this.state.value)}}>{this.props.description}</Button>
+            <Button size='lg' onClick={this.state.turnedOn ? () => {this.setState({turnedOn: false}); this.props.turnButtonOff(this.state.value)} : () => {this.setState({turnedOn: false}); this.props.turnButtonOn(this.state.value)}}>{this.props.description}</Button>
         )
     }
 }

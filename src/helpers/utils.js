@@ -5,6 +5,7 @@ require('dotenv').config();
 export const urlBuilder = (query) => {
     if (query !== '') {
         const urlSafeQuery = urlify(query);
+        console.log(`utils.urlBuilder urlSafeQuery ${urlSafeQuery}`);
         return `${apiBaseUrl}${urlSafeQuery}${queryFilter}${process.env.GOOGLE_API_KEY}`
     } else {
         throw Error("query is null");
@@ -23,5 +24,6 @@ export const arraysEqual = (a, b) => {
 };
 
 const urlify = (query) => {
+    console.log(`utils.urlify param ${query}`);
     return query.trim().replace(/\s/g, '%20');
 };
