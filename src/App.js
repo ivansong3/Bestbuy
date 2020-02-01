@@ -4,32 +4,32 @@ import RemindersList from './components/reminders-list.component';
 import EditReminder from './components/edit-reminder.component';
 import CreateReminder from './components/create-reminder.component';
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./style.css"
 
+import {Container, Row, Col} from 'react-bootstrap';
+import ProductCard from './components/ProductCard.component';
+ 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div className="container">
-          <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a className="navbar-brand" href="https://codingthesmartway.com" target="_blank" rel="noopener noreferrer">
-            </a>
-            <Link to="/" className="navbar-brand">MERN-Stack Todo App</Link>
-            <div className="collpase navbar-collapse">
-              <ul className="navbar-nav mr-auto">
-                <li className="navbar-item">
-                  <Link to="/" className="nav-link">Todos</Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/create" className="nav-link">Create Todo</Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
-          <br/>
-          <Route path="/" exact component={RemindersList} />
-          <Route path="/edit/:id" component={EditReminder} />
-          <Route path="/create" component={CreateReminder} />
-        </div>
+        <container>
+          <Row>
+            <h1 className="title">
+              Bestbuy Blue Assitant
+            </h1>
+          </Row>
+      
+          <Row></Row>
+
+          <Row>
+            <Col xs={9}>
+              <ProductCard> </ProductCard>
+            </Col>
+            <Col></Col>
+          </Row>
+
+        </container>
       </Router>
     );
   }
