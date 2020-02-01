@@ -7,6 +7,11 @@ import {Container, Row, Col} from 'react-bootstrap';
 import CardDeck from './components/ProductCard.component';
  
 class App extends Component {
+  constructor(prop) {
+    super(prop);
+    this.state = {products: []};
+}
+
   render() {
     return (
       <Router>
@@ -21,7 +26,10 @@ class App extends Component {
 
           <Row>
             <Col xs={9}>
-              <CardDeck> </CardDeck>
+              <CardDeck>
+                 <Card item={this.state.products[0]}/>
+                 <Card item >
+                </CardDeck>
             </Col>
             <Col></Col>
           </Row>
