@@ -20,7 +20,7 @@ class PriorityButton extends Component {
 
     render() {
         return (
-            <Button size='lg' onClick={this.state.turnedOn ? () => {this.setState({turnedOn: false}); this.props.turnButtonOff(this.state.value)} : () => {this.setState({turnedOn: true}); this.props.turnButtonOn(this.state.value)}}>{this.props.description}</Button>
+            <Button active={this.state.turnedOn} activetrue size='lg' variant="outline-primary" onClick={this.state.turnedOn ? () => {this.setState({turnedOn: false}); this.props.turnButtonOff(this.state.value)} : () => {this.setState({turnedOn: true}); this.props.turnButtonOn(this.state.value)}}>{this.props.description}</Button>
         )
     }
 }
