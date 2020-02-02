@@ -7,6 +7,7 @@ import { urlBuilder, arraysEqual } from './helpers/utils';
 import VideoRecommendationPanel from './components/video-recommendations.component';
 import ProductCard from "./components/ProductCard.component";
 import PriorityButton from "./components/priority-button.component";
+import BestBuy from "./assets/bestbuy.png"
 
  export default class App extends Component {
   constructor(prop) {
@@ -93,12 +94,11 @@ import PriorityButton from "./components/priority-button.component";
   render() {
     return (
         <Container fluid style={{paddingRight: "50 px", paddingLeft: "50 px", width: "100%"}}>
-          <Row style={{ height: "50 px"}}>
-            <div>
-              <h1 className="title">
-                Bestbuy Blue Assistant
-              </h1>
-            </div>
+          <Row style={{ height: "50 px", backgroundColor: '#0A4ABF'}}>
+            <h1 className="title">
+              <img className='logo' src={BestBuy} alt=''/>
+              Bestbuy Blue Assistant
+            </h1>
           </Row>
           <Row>
               <VideoRecommendationPanel videos={this.state.youtubeQuery}/>
