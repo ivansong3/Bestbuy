@@ -27,7 +27,7 @@ import BestBuy from "./assets/bestbuy.png"
     switch (currCombination) {
       case 1:
         // battery priority
-        newState = [1, 8, 9, 2, 5, 6, 4, 3, 7];
+        newState = [6, 5, 8, 9, 1, 3, 7, 4, 2];
         console.log( 'case 1');
         if (!arraysEqual(prevState.products, newState) && prevState.combination !== this.state.combination) {
           this.setState({products: newState});
@@ -36,7 +36,7 @@ import BestBuy from "./assets/bestbuy.png"
       case 2:
         // price priority
         console.log( 'case 2');
-        newState = [4, 7, 3, 5, 8, 2, 1, 6, 9];
+        newState = [9, 7, 3, 2, 4, 5, 8, 1, 6];
         if (!arraysEqual(prevState.products, newState) && prevState.combination !== this.state.combination) {
           this.setState({products: newState});
         }
@@ -44,7 +44,7 @@ import BestBuy from "./assets/bestbuy.png"
       case 3:
         // price + battery priority
         console.log( 'case 3');
-        newState = [6, 9, 1, 2, 8, 5, 3, 7, 4];
+        newState = [6, 3, 4, 1, 8, 7, 5, 9, 2];
         if (!arraysEqual(prevState.products, newState) && prevState.combination !== this.state.combination) {
           this.setState({products: newState});
         }
@@ -52,7 +52,7 @@ import BestBuy from "./assets/bestbuy.png"
       case 5:
         // screen resolution priority
         console.log( 'case 5');
-        newState = [5, 6, 7, 8, 9, 1, 2, 3, 4];
+        newState = [6, 3, 4, 1, 8, 7, 5, 9, 2];
         if (!arraysEqual(prevState.products, newState) && prevState.combination !== this.state.combination) {
           this.setState({products: newState});
         }
