@@ -93,14 +93,12 @@ import PriorityButton from "./components/priority-button.component";
   render() {
     return (
         <Container fluid style={{paddingRight: "50 px", paddingLeft: "50 px", width: "100%"}}>
-          <Row>
-            <h1 className="title">
-              Bestbuy Blue Assistant
-            </h1>
-            <br></br>
-            <h4 className="title">
-              Recommendation Videos
-            </h4>
+          <Row style={{ height: "50 px"}}>
+            <div>
+              <h1 className="title">
+                Bestbuy Blue Assistant
+              </h1>
+            </div>
           </Row>
           <Row>
               <VideoRecommendationPanel videos={this.state.youtubeQuery}/>
