@@ -5,13 +5,14 @@
     Color: #ffffff;
     font-size: 30px;
     height: 100px;
+    margin-left: 10px;
 }
 
 .subtitle {
     padding-left: 40px;
     padding-top: 20px;
     padding-bottom: 40px;
-    Color: #0A4ABF;
+    Color: black;
     font-size: 30px;
     height: 50px;
     margin-left: 60px;

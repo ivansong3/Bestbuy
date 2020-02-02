@@ -96,7 +96,7 @@ import BestBuy from "./assets/bestbuy.png"
         <Container fluid style={{paddingRight: "50 px", paddingLeft: "50 px", width: "100%"}}>
           <Row style={{ height: "50 px", backgroundColor: '#0A4ABF'}}>
             <h1 className="title">
-              <img className='logo' src={BestBuy} alt=''/>
+              <img className='logo' style={{paddingRight: "15px"}} src={BestBuy} alt=''/>
               Bestbuy Blue Assistant
             </h1>
           </Row>
@@ -130,6 +130,7 @@ import BestBuy from "./assets/bestbuy.png"
             <Col style={{position: 'sticky', float: "right"}} xs={2}>
             <table style={{paddingLeft: "40px"}}>
               <tbody>
+                <body style={{color: "black"}}>What factors are important to you?</body>
                 <tr>
                   <td>
                     <PriorityButton description='Screen Res' value={5} turnButtonOn={this.turnButtonOn} turnButtonOff={this.turnButtonOff} style={{paddingLeft: "0px"}}></PriorityButton>
