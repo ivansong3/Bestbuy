@@ -6,7 +6,7 @@ export const urlBuilder = (query) => {
     if (query !== '') {
         const urlSafeQuery = urlify(query);
         console.log(`utils.urlBuilder urlSafeQuery ${urlSafeQuery}`);
-        return `${apiBaseUrl}${urlSafeQuery}${queryFilter}AIzaSyDx3QIDNlSTTnSRjjK8a4F8AmexEbkNsUg`
+        return `${apiBaseUrl}${urlSafeQuery}${queryFilter}`
     } else {
         throw Error("query is null");
     }
